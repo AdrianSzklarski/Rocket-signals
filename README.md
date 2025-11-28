@@ -70,10 +70,8 @@ python simulation_with_turning_target.py [--duration 30.0] [--dt 0.02] [--speed 
 
 ## Sample Figures from the Simulation
 
-### Figure 1
 ![Figure 1: Example of the simulation trajectory](png/Fot.1.png)
 
-### Figure 2
 ![Figure 2: Example of Laplace transform analysis](png/Fot.2.png)
 
 ---
