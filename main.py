@@ -10,7 +10,7 @@
 #  - Compute Laplace transform F(s) for a range of s values
 #  - Save |F(s)| plot to PNG (no GUI required)
 #
-# Author:
+# Author: Adrian Szklarski
 # Date: 2025-11-28
 # ==========================================================
 
