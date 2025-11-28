@@ -68,47 +68,16 @@ python simulation_with_turning_target.py [--duration 30.0] [--dt 0.02] [--speed 
 
 ## Mathematical Formulas
 
-**Laplace Transform (numeric approximation):**
+## Example Images
 
-\[
-F(s) = \int_0^{T} f(t) e^{-st} dt
-\]
+Below are sample figures from the simulation:
 
-**Error signal:**
+![Figure 1](png/Fot.1.png)
+*Figure 1: Example of the simulation trajectory.*
 
-\[
-e(t) = y_{target}(t) - y_{rocket}(t)
-\]
+![Figure 2](png/Fot.2.png)
+*Figure 2: Example of Laplace transform analysis.*
 
-**Discrete energy and power:**
-
-\[
-E = \sum_{n=0}^{N-1} |x[n]|^2,
-\]
-\[
-P = \frac{1}{N} \sum_{n=0}^{N-1} |x[n]|^2
-\]
-
-**Continuous energy and power:**
-
-\[
-E = \int_0^T |x(t)|^2 dt,
-\]
-\[
-P = \frac{E}{T}
-\]
-
-**Autocorrelation:**
-
-\[
-R_{xx}[k] = \frac{1}{max|R_{xx}|} \sum_{n} (x[n] - \bar{x})(x[n+k] - \bar{x})
-\]
-
-**RC Filter:**
-
-\[
-V_c(t+\Delta t) = V_c(t) + \Delta t \left( -\frac{V_c(t)}{RC} + \frac{V_{in}(t)}{RC} \right)
-\]
 
 ---
 
