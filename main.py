@@ -16,7 +16,7 @@
 
 from module import imports
 from module.Math_Laplace import Laplace_function as Lf
-from module.Windows import windows as Win
+from module.Windows import windows as Win, update_subplot
 import matplotlib.pyplot as plt
 
 np = imports().np
@@ -40,19 +40,22 @@ if __name__ == "__main__":
         # --- Print results ---
         print("F(s) =", F_s)
 
-        # --- Create window (full 2x4 layout) ---
+        # --- Create window (2x4 layout) ---
         fig, axes = Win(title="Hypersonic Interceptor vs Incoming Missile Simulation")
 
-        ax = axes[2]
-
-        ax.plot(s_values, np.abs(F_s))
-        ax.set_xlabel('s')
-        ax.set_ylabel('|F(s)|')
-        ax.set_title('Laplace Transform of Target Position')
-        ax.grid(True)
+        # --- Update the third subplot (first in second row) ---
+        update_subplot(
+            ax=axes[2],  # wybrany subplot
+            x_data=s_values,  # dane na oś X
+            y_data=np.abs(F_s),  # dane na oś Y
+            label="|F(s)|",  # legenda
+            title="Laplace Transform of Target Position",
+            xlabel="s",
+            ylabel="|F(s)|",
+            clear=True  # czyścimy stary wykres
+        )
 
         # --- Save and show ---
-        fig.tight_layout()
         fig.savefig("laplace_test.png")
         print("Plot saved as laplace_test.png")
 

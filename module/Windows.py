@@ -28,7 +28,14 @@ def windows(title="Hypersonic Interceptor vs Incoming Missile Simulation"):
     fig = plt.figure(figsize=(20, 10))
     fig.canvas.manager.set_window_title(title)
 
-    gs = GridSpec(2, 4, figure=fig)
+    fig.subplots_adjust(
+        left=0.06, right=0.96,
+        top=0.93, bottom=0.07
+    )
+
+    gs = GridSpec(2, 4, figure=fig,
+                  wspace=0.35,
+                  hspace=0.38)
 
     ax1 = fig.add_subplot(gs[0, 0:2])
     ax2 = fig.add_subplot(gs[0, 2])
@@ -42,7 +49,10 @@ def windows(title="Hypersonic Interceptor vs Incoming Missile Simulation"):
     return fig, ax_list
 
 
-def update_subplot(ax, x_data, y_data, label="", title="", xlabel="", ylabel=""):
+def update_subplot(ax, x_data, y_data, label="", title="", xlabel="", ylabel="", clear=False):
+    if clear:
+        ax.cla()
+
     ax.plot(x_data, y_data, label=label)
     ax.set_title(title)
     ax.set_xlabel(xlabel)
