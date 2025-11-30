@@ -17,6 +17,7 @@
 from module import imports
 from module.Math_Laplace import Laplace_function as Lf
 from module.Windows import windows as Win, update_subplot
+from module.Markers import make_missile
 import matplotlib.pyplot as plt
 
 np = imports().np
@@ -43,6 +44,31 @@ if __name__ == "__main__":
         # --- Create window (2x4 layout) ---
         fig, axes = Win(title="Hypersonic Interceptor vs Incoming Missile Simulation")
 
+        # Set the visible X & Y range of the main subplot
+        axes[0].set_xlim(150, 200)
+        axes[0].set_ylim(0, 12)
+
+        # Create and draw the interceptor missile (blue)
+        # Parameters: axis, initial X position, initial Y position, rotation angle,
+        # edge color, and label text
+        interceptor, interceptor_text = make_missile(
+            axes[0],
+            180, 6,
+            angle_deg=90,
+            color="blue",
+            label="Rocket"
+        )
+
+        # Create and draw the target missile (red)
+        # Same parameters as above but with different position and rotation
+        target, target_text = make_missile(
+            axes[0],
+            182, 6,
+            angle_deg=-90,
+            color="red",
+            label="Target"
+        )
+
         # --- Update the third subplot (first in second row) ---
         update_subplot(
             ax=axes[2],  # wybrany subplot
@@ -52,7 +78,7 @@ if __name__ == "__main__":
             title="Laplace Transform of Target Position",
             xlabel="s",
             ylabel="|F(s)|",
-            clear=True  # czyścimy stary wykres
+            clear=False  # czyścimy stary wykres
         )
 
         # --- Save and show ---
